@@ -133,3 +133,9 @@ async def get_expelled_fluids(pid: int, start_time = Query(None), end_time = Que
 @app.post("/expelled_fluids")
 async def post_expelled_fluids(item: expelled_fluids):
     return mongo.post_expelled_fluids(item)
+
+# Ensure the API starts automatically when the script is run
+import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)), reload=True)
