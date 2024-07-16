@@ -2,8 +2,11 @@ from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from mongoconnect.mongoconnect import MongoConnector
 from data_models import Patient_data, start_of_cycle_info, end_of_cycle_info, need_only_data, graph_data, heart_data, respiratory_data, blood_gasses, expelled_fluids
+import os
 
-mongo = MongoConnector("icudb", "localhost", 27017)
+MONGODB_URI = os.getenv("MONGO_URL", "mongodb://localhost:27017/icudb")
+
+mongo = MongoConnector(MONGODB_URI)
 app = FastAPI()
 
 # Allow CORS
