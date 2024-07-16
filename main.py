@@ -5,8 +5,9 @@ from data_models import Patient_data, start_of_cycle_info, end_of_cycle_info, ne
 import os
 
 MONGODB_URI = os.getenv("MONGO_URL", "mongodb://localhost:27017/icudb")
+DB_NAME = "icudb"
 
-mongo = MongoConnector(MONGODB_URI)
+mongo = MongoConnector(MONGODB_URI, DB_NAME)
 app = FastAPI()
 
 # Allow CORS

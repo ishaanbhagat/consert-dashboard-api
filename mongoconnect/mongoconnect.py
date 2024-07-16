@@ -4,13 +4,14 @@ from data_models import *
 
 class MongoConnector:
 
-    def __init__(self, uri):
+    def __init__(self, uri, dbname):
         self.uri = uri
+        self.dbname = dbname
 
     def connect(self):
         self.client = MongoClient(self.uri)
-        self.db = self.client.get_default_database()
-
+        self.db = self.client[self.dbname]
+        
         # access collections
         self.patient_data = self.db["patient_data"]
         self.graph_data = self.db["graph_data"]
