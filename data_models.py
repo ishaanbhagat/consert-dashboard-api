@@ -42,7 +42,7 @@ class graph_data(BaseModel):
     datetime: str
     temperature: float
     bloodPressure: float
-    bloodOxygen: int
+    bloodOxygen: float
     # systolic_pressure: int
     # diastolic_pressure: int
 
